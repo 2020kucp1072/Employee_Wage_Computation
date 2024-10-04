@@ -39,17 +39,17 @@ def calculate_daily_wage(hourly_wage,hours):
     return hourly_wage * hours
 
 def main():
-    part_time =4
-    full_time =8
+    part_ti =4
+    full_ti =8
     welcome_message()
     present = is_employee_present()
     if present==1:
         print("Employee is Present")
         employee_type = random.choice(["full-time", "part-time"])
         if employee_type == "full-time":
-            wage = calculate_daily_wage(20,full_time)
+            wage = calculate_daily_wage(20,full_ti)
         else:
-            wage = calculate_daily_wage(20,part_time)
+            wage = calculate_daily_wage(20,part_ti)
         print(f"Employee is {employee_type.capitalize()}, Wage: {wage}")
     else:
         print("Employee is Absent")
