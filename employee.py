@@ -38,24 +38,29 @@ def calculate_daily_wage(hourly_wage,hours):
     """
     return hourly_wage * hours
 
+def calculate_monthly_wage(working_days=20):
+    """
+    Description:
+        Calculates the monthly wage for the employee based on working days.
+    Parameters:
+        working_days : int : Number of working days in a month (default: 20)
+    Return:
+        int : Monthly wage of the employee
+    """
+    return calculate_daily_wage(20,8) * working_days
+
 def main():
-    part_ti =4
-    full_ti =8
     welcome_message()
     present = is_employee_present()
-    if present==1:
-        print("Employee is Present")
+    if present:
         employee_type = random.choice(["full-time", "part-time"])
         if employee_type == "full-time":
-            wage = calculate_daily_wage(20,full_ti)
+            wage = calculate_monthly_wage()
         else:
-            wage = calculate_daily_wage(20,part_ti)
-        print(f"Employee is {employee_type.capitalize()}, Wage: {wage}")
+            wage = calculate_daily_wage(20,4) * 20  # Assuming part-time works for 20 days
+        print(f"Employee is {employee_type.capitalize()}, Monthly Wage: {wage}")
     else:
         print("Employee is Absent")
-        
-    
 
 if __name__ == "__main__":
     main()
-
