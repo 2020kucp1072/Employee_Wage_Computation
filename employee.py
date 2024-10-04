@@ -49,16 +49,32 @@ def calculate_monthly_wage(working_days=20):
     """
     return calculate_daily_wage(20,8) * working_days
 
+def calculate_wage_with_conditions(max_hours=100, max_days=20):
+    """
+    Description:
+        Calculates wages based on a condition of max working hours or days.
+    Parameters:
+        max_hours : int : Maximum working hours allowed in a month (default: 100)
+        max_days : int : Maximum working days allowed in a month (default: 20)
+    Return:
+        int : Total wage based on hours or days worked.
+    """
+    total_hours = 0
+    total_days = 0
+    total_wage = 0
+    while total_hours < max_hours and total_days < max_days:
+        hours_worked = random.choice([4, 8])
+        total_hours += hours_worked
+        total_wage += calculate_daily_wage(20,8) if hours_worked == 8 else calculate_daily_wage(20,4)
+        total_days += 1
+    return total_wage
+
 def main():
     welcome_message()
     present = is_employee_present()
     if present:
-        employee_type = random.choice(["full-time", "part-time"])
-        if employee_type == "full-time":
-            wage = calculate_monthly_wage()
-        else:
-            wage = calculate_daily_wage(20,4) * 20  # Assuming part-time works for 20 days
-        print(f"Employee is {employee_type.capitalize()}, Monthly Wage: {wage}")
+        wage = calculate_wage_with_conditions()
+        print(f"Total Wage based on hours and days condition: {wage}")
     else:
         print("Employee is Absent")
 
