@@ -26,13 +26,32 @@ def is_employee_present():
     """
     return random.randint(0,1)
 
+def calculate_full_daily_wage(hourly_wage=20, full_day_hours=8):
+    """
+    Description:
+        Calculates the daily wage of an employee.
+    Parameters:
+        hourly_wage : int : Wage per hour (default: 20)
+        full_day_hours : int : Number of hours in a full working day (default: 8)
+    Return:
+        int : Daily wage of the employee
+    """
+    return hourly_wage * full_day_hours
+
 def main():
+    part_time =4
+    full_time =8
     welcome_message()
     present = is_employee_present()
     if present==1:
         print("Employee is Present")
+        wage = calculate_full_daily_wage()
+        print(f"Employee is Present, Daily Wage: {wage}")
+    
     else:
         print("Employee is Absent")
+        
+    
 
 if __name__ == "__main__":
     main()
