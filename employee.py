@@ -26,17 +26,17 @@ def is_employee_present():
     """
     return random.randint(0,1)
 
-def calculate_part_daily_wage(hourly_wage=20, part_day_hours=4):
+def calculate_daily_wage(hourly_wage,hours):
     """
     Description:
-        Calculates the daily wage of an employee.
+        Calculates the wage for a part-time employee.
     Parameters:
         hourly_wage : int : Wage per hour (default: 20)
-        full_day_hours : int : Number of hours in a full working day (default: 8)
+        part_time_hours : int : Number of part-time working hours (default: 4)
     Return:
-        int : Daily wage of the employee
+        int : Part-time wage of the employee
     """
-    return hourly_wage * part_day_hours
+    return hourly_wage * hours
 
 def main():
     part_time =4
@@ -45,9 +45,12 @@ def main():
     present = is_employee_present()
     if present==1:
         print("Employee is Present")
-        wage = calculate_part_daily_wage()
-        print(f"Employee is Present, Daily Wage: {wage}")
-    
+        employee_type = random.choice(["full-time", "part-time"])
+        if employee_type == "full-time":
+            wage = calculate_daily_wage(20,full_time)
+        else:
+            wage = calculate_daily_wage(20,part_time)
+        print(f"Employee is {employee_type.capitalize()}, Wage: {wage}")
     else:
         print("Employee is Absent")
         
